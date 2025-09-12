@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from apps.models import Carteira
+from apps.carteira.models import Carteira
 from .serializers import CarteiraSerializer
 from rest_framework.permissions import IsAuthenticated
 

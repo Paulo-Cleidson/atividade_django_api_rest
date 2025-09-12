@@ -11,7 +11,7 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('apps.api.v1.router')),
+    path('api/v1/', include('apps.carteira.api.v1.router')),
     path(
         'api/token/',
         TokenObtainPairView.as_view(),
