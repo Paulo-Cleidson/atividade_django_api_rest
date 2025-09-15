@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from django.conf import settings
 
 
 # Gerenciador Personalizado para filtrar os excluidos
@@ -56,9 +56,12 @@ class BaseModel(models.Model):
 
 
 class Carteira(BaseModel):
-    # 1 carteira por usuário
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=100, default="Minha Carteira")
+    usuario = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="Carteira"
+    )
+    nome = models.CharField(max_length=100, default="Carteira")
     saldo_inicial = models.DecimalField(
         max_digits=10, decimal_places=2, default=0
     )
